@@ -14,15 +14,6 @@ if (!apiKey || !projectId || !integrationId) {
   );
 }
 
-interface QuestionResponse {
-  answer: string;
-  relevant_sources: Array<{
-    source_url: string;
-    title: string;
-    contains_internal_data: boolean;
-  }>;
-}
-
 interface SearchResponse {
   search_results: Array<{
     title: string;
@@ -42,34 +33,6 @@ function getServer(): McpServer {
       capabilities: {
         logging: {},
       },
-    }
-  );
-  server.registerTool(
-    "ask_astro_question",
-    {
-      title: "Ask Astro question",
-      description: "Ask a technical question about Astro framework",
-      inputSchema: {
-        query: z.string().describe("The question to ask about Astro"),
-      },
-    },
-    async ({ query }) => {
-      if (!query) {
-        throw new Error("Query is required");
-      }
-      const result = await sendKapaRequest<QuestionResponse>("chat", query);
-      if ("error" in result) {
-        return formatResponse(result);
-      }
-      return formatResponse({
-        answer: result.answer,
-        relevant_sources: result.relevant_sources.map(
-          ({ source_url, title }) => ({
-            source_url,
-            title,
-          })
-        ),
-      });
     }
   );
 

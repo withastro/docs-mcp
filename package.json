@@ -14,6 +14,6 @@
     "@modelcontextprotocol/sdk": "^1.15.1",
     "@netlify/edge-functions": "^2.15.6",
     "fetch-to-node": "^2.1.0",
-    "zod": "^4.0.5"
+    "zod": "^3.25.76"
   }
 }

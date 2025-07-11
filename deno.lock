@@ -8,7 +8,7 @@
     "npm:astro@*": "5.11.0_vite@6.3.5__picomatch@4.0.2_zod@3.25.76",
     "npm:fetch-to-node@2": "2.1.0",
     "npm:fetch-to-node@^2.1.0": "2.1.0",
-    "npm:zod@^4.0.5": "4.0.5"
+    "npm:zod@^3.25.76": "3.25.76"
   },
   "npm": {
     "@astrojs/compiler@2.12.2": {
@@ -386,7 +386,7 @@
         "express-rate-limit",
         "pkce-challenge",
         "raw-body",
-        "zod@3.25.76",
+        "zod",
         "zod-to-json-schema"
       ]
     },
@@ -845,7 +845,7 @@
         "xxhash-wasm",
         "yargs-parser",
         "yocto-spinner",
-        "zod@3.25.76",
+        "zod",
         "zod-to-json-schema",
         "zod-to-ts"
       ],
@@ -3043,21 +3043,18 @@
     "zod-to-json-schema@3.24.6_zod@3.25.76": {
       "integrity": "sha512-h/z3PKvcTcTetyjl1fkj79MHNEjm+HpD6NXheWjzOekY7kV+lwDYnHw+ivHkijnCSMz1yJaWBD9vu/Fcmk+vEg==",
       "dependencies": [
-        "zod@3.25.76"
+        "zod"
       ]
     },
     "zod-to-ts@1.2.0_typescript@5.8.3_zod@3.25.76": {
       "integrity": "sha512-x30XE43V+InwGpvTySRNz9kB7qFU8DlyEy7BsSTCHPH1R0QasMmHWZDCzYm6bVXtj/9NNJAZF3jW8rzFvH5OFA==",
       "dependencies": [
         "typescript",
-        "zod@3.25.76"
+        "zod"
       ]
     },
     "zod@3.25.76": {
       "integrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="
-    },
-    "zod@4.0.5": {
-      "integrity": "sha512-/5UuuRPStvHXu7RS+gmvRf4NXrNxpSllGwDnCBcJZtQsKrviYXm54yDGV2KYNLT5kq0lHGcl7lqWJLgSaG+tgA=="
     },
     "zwitch@2.0.4": {
       "integrity": "sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A=="
@@ -3083,7 +3080,7 @@
         "npm:@modelcontextprotocol/sdk@^1.15.1",
         "npm:@netlify/edge-functions@^2.15.6",
         "npm:fetch-to-node@^2.1.0",
-        "npm:zod@^4.0.5"
+        "npm:zod@^3.25.76"
       ]
     }
   }

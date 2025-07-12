@@ -19,9 +19,11 @@ Each tool has its own way of adding MCP servers, so here are instructions for so
 
 ### Cursor
 
-Click the button below to install automatically:
+GitHub doesn't support Cursor deep links, so open the link below in your browser to install the MCP server in Cursor:
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](cursor://anysphere.cursor-deeplink/mcp/install?name=Astro%20docs&config=eyJ1cmwiOiJodHRwczovL21jcC5kb2NzLmFzdHJvLmJ1aWxkL21jcCJ9)
+```
+cursor://anysphere.cursor-deeplink/mcp/install?name=Astro%20docs&config=eyJ1cmwiOiJodHRwczovL21jcC5kb2NzLmFzdHJvLmJ1aWxkL21jcCJ9
+```
 
 [More info on MCP in Cursor](https://docs.cursor.com/context/mcp)
 
@@ -47,7 +49,11 @@ claude mcp add --transport http "Astro docs" https://mcp.docs.astro.build/mcp
 
 ### VS Code
 
-Click the link to install automatically: [**Install**](vscode:mcp/install?%7B%22name%22%3A%22Astro%20docs%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.docs.astro.build%2Fmcp%22%7D)
+GitHub doesn't support VS Code deep links, so open the link below in your browser to install the MCP server in Cursor:
+
+```
+vscode:mcp/install?%7B%22name%22%3A%22Astro%20docs%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.docs.astro.build%2Fmcp%22%7D
+```
 
 [More info on MCP in VS Code](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server)
 

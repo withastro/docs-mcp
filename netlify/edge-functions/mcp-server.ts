@@ -96,6 +96,12 @@ function formatResponse(data: unknown): {
 
 // Netlify Edge Function Handler
 export default async function handler(req: Request) {
+  if (req.method !== "POST") {
+    return Response.redirect(
+      "https://docs.astro.build/en/reference/mcp-server/",
+      302
+    );
+  }
   try {
     const { req: nodeReq, res: nodeRes } = toReqRes(req);
     const server = getServer();
@@ -129,5 +135,5 @@ export default async function handler(req: Request) {
 
 export const config: Config = {
   path: "/mcp",
-  method: "POST",
+  method: ["POST", "GET"],
 };

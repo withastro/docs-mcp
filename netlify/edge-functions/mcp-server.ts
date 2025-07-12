@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { toFetchResponse, toReqRes } from "fetch-to-node";
 import z from "zod";
-import type { Config } from "@netlify/edge-functions";
+import type { Config, Context } from "@netlify/edge-functions";
 
 const apiKey = Netlify.env.get("KAPA_API_KEY");
 const projectId = Netlify.env.get("KAPA_PROJECT_ID");
@@ -95,8 +95,8 @@ function formatResponse(data: unknown): {
 }
 
 // Netlify Edge Function Handler
-export default async function handler(req: Request) {
-  if (req.method !== "POST") {
+export default async function handler(req: Request, { url }: Context) {
+  if (req.method !== "POST" || url.pathname !== "/mcp") {
     return Response.redirect(
       "https://docs.astro.build/en/reference/mcp-server/",
       302
@@ -134,6 +134,6 @@ export default async function handler(req: Request) {
 }
 
 export const config: Config = {
-  path: "/mcp",
+  path: ["/", "/mcp"],
   method: ["POST", "GET"],
 };

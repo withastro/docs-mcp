@@ -1,6 +1,2 @@
 [build]
 publish = "public"
-
-[[redirects]]
-	from = "/"
-	to = "https://docs.astro.build/en/reference/mcp-server/"

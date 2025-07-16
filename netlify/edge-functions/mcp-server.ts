@@ -98,7 +98,7 @@ function formatResponse(data: unknown): {
 export default async function handler(req: Request, { url }: Context) {
   if (req.method !== "POST" || url.pathname !== "/mcp") {
     return Response.redirect(
-      "https://docs.astro.build/en/reference/mcp-server/",
+      "https://docs.astro.build/en/guides/build-with-ai/",
       302
     );
   }

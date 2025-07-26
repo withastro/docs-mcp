@@ -95,13 +95,7 @@ function formatResponse(data: unknown): {
 }
 
 // Netlify Edge Function Handler
-export default async function handler(req: Request, { url }: Context) {
-  if (req.method !== "POST" || url.pathname !== "/mcp") {
-    return Response.redirect(
-      "https://docs.astro.build/en/guides/build-with-ai/",
-      302
-    );
-  }
+export default async function handler(req: Request) {
   try {
     const { req: nodeReq, res: nodeRes } = toReqRes(req);
     const server = getServer();
@@ -134,6 +128,6 @@ export default async function handler(req: Request, { url }: Context) {
 }
 
 export const config: Config = {
-  path: ["/", "/mcp"],
-  method: ["POST", "GET"],
+  path: ["/mcp", "/"],
+  method: ["POST"],
 };

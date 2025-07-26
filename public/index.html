@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Astro Docs MCP Server</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+			background: #0d0f14;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+		}
+
+		.container {
+			max-width: 600px;
+			padding: 3rem 2rem;
+			text-align: center;
+			background: rgba(255, 255, 255, 0.03);
+			backdrop-filter: blur(20px);
+			border-radius: 20px;
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+		}
+
+		.logo {
+			width: 80px;
+			height: 80px;
+			margin: 0 auto 1rem;
+			display: block;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			font-weight: 600;
+			margin-bottom: 1rem;
+			line-height: 1.2;
+		}
+
+		.subtitle {
+			font-size: 1.2rem;
+			opacity: 0.9;
+			margin-bottom: 2.5rem;
+			line-height: 1.5;
+		}
+
+		.server-config {
+			background: rgba(0, 0, 0, 0.4);
+			border-radius: 12px;
+			padding: 1.5rem;
+			margin: 2rem 0;
+			text-align: left;
+			border: 1px solid rgba(255, 255, 255, 0.05);
+		}
+
+		.config-title {
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin-bottom: 1rem;
+			color: #ffffff;
+		}
+
+		.config-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 0.75rem;
+			font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+			font-size: 0.9rem;
+		}
+
+		.config-key {
+			color: #bc52ee;
+			font-weight: 500;
+		}
+
+		.config-value {
+			color: #ffffff;
+			background: rgba(255, 255, 255, 0.05);
+			padding: 0.25rem 0.5rem;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+
+		.config-value:hover {
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		.links {
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			flex-wrap: wrap;
+			margin-top: 2rem;
+		}
+
+		.cta-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 1rem 2rem;
+			background: linear-gradient(135deg, #bc52ee 0%, #3245ff 100%);
+			color: white;
+			text-decoration: none;
+			border-radius: 50px;
+			font-weight: 600;
+			font-size: 1.1rem;
+			transition: all 0.3s ease;
+			border: none;
+			box-shadow: 0 4px 15px rgba(188, 82, 238, 0.3);
+		}
+
+		.cta-button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(188, 82, 238, 0.4);
+		}
+
+		.secondary-link {
+			color: rgba(255, 255, 255, 0.7);
+			text-decoration: none;
+			font-weight: 400;
+			font-size: 0.9rem;
+			transition: color 0.3s ease;
+		}
+
+		.secondary-link:hover {
+			color: white;
+			text-decoration: underline;
+		}
+
+		.icon {
+			font-size: 1.2rem;
+		}
+
+		@media (max-width: 640px) {
+			.container {
+				margin: 1rem;
+				padding: 2rem 1.5rem;
+			}
+
+			h1 {
+				font-size: 2rem;
+			}
+
+			.logo {
+				width: 60px;
+				height: 60px;
+			}
+
+			.config-item {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.5rem;
+			}
+
+			.links {
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+			<g>
+				<path
+					d="M47.7 107.1c-5.5-5-7.2-15.7-4.9-23.4 4 4.9 9.6 6.4 15.4 7.3 8.9 1.3 17.6.8 25.9-3.2l2.8-1.7a18 18 0 0 1-7.2 20l-5.5 3.8c-5.6 3.8-7.2 8.2-5 14.7l.2.7a14 14 0 0 1-6.6-5.6 15.8 15.8 0 0 1-2.6-8.6c0-1.5 0-3-.2-4.5-.5-3.7-2.2-5.3-5.5-5.4-3.3-.1-5.9 2-6.6 5.2l-.2.7ZM16 82.4s16.5-8 33-8l12.4-38.3c.5-2 1.8-3.2 3.3-3.2 1.6 0 3 1.3 3.4 3.2l12.4 38.3c19.6 0 33 8 33 8l-28-76c-.8-2.3-2.2-3.7-4-3.7H48c-1.8 0-3.1 1.4-4 3.7l-28 76Z" />
+			</g>
+			<path fill="url(#a)"
+				d="M47.7 107.1c-5.5-5-7.2-15.7-4.9-23.4 4 4.9 9.6 6.4 15.4 7.3 8.9 1.3 17.6.8 25.9-3.2l2.8-1.7a18 18 0 0 1-7.2 20l-5.5 3.8c-5.6 3.8-7.2 8.2-5 14.7l.2.7a14 14 0 0 1-6.6-5.6 15.8 15.8 0 0 1-2.6-8.6c0-1.5 0-3-.2-4.5-.5-3.7-2.2-5.3-5.5-5.4-3.3-.1-5.9 2-6.6 5.2l-.2.7Z" />
+			<defs>
+				<linearGradient id="a" x1="64.7" x2="77.4" y1="119.2" y2="77.4" gradientUnits="userSpaceOnUse">
+					<stop stop-color="#D83333" />
+					<stop offset="1" stop-color="#F041FF" />
+				</linearGradient>
+			</defs>
+			<style>
+				g {
+					fill: #fff;
+				}
+			</style>
+		</svg>
+		<h1>Astro Docs MCP Server</h1>
+		<p class="subtitle">
+			Connect your AI tools to the latest Astro documentation using the Model Context Protocol
+		</p>
+
+		<div class="server-config">
+			<div class="config-title">Server Configuration</div>
+			<div class="config-item">
+				<span class="config-key">Name:</span>
+				<span class="config-value" onclick="copyToClipboard('Astro Docs')">Astro Docs</span>
+			</div>
+			<div class="config-item">
+				<span class="config-key">URL:</span>
+				<span class="config-value"
+					onclick="copyToClipboard('https://mcp.docs.astro.build/mcp')">https://mcp.docs.astro.build/mcp</span>
+			</div>
+			<div class="config-item">
+				<span class="config-key">Transport:</span>
+				<span class="config-value" onclick="copyToClipboard('http')">http</span>
+			</div>
+		</div>
+
+		<div class="links">
+			<a href="https://docs.astro.build/en/guides/build-with-ai/" class="cta-button">
+				View Documentation
+			</a>
+		</div>
+
+		<div style="margin-top: 1rem;">
+			<a href="https://github.com/withastro/docs-mcp" class="secondary-link">
+				Source code
+			</a>
+		</div>
+	</div>
+
+	<script>
+		function copyToClipboard(text) {
+			navigator.clipboard.writeText(text).then(() => {
+				// Simple visual feedback
+				const originalText = event.target.textContent;
+				event.target.textContent = 'Copied!';
+				event.target.style.background = 'rgba(255, 255, 255, 0.3)';
+
+				setTimeout(() => {
+					event.target.textContent = originalText;
+					event.target.style.background = 'rgba(255, 255, 255, 0.1)';
+				}, 1000);
+			});
+		}
+	</script>
+</body>
+
+</html>

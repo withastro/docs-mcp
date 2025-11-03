@@ -76,4 +76,4 @@ As of July 2025, Windsurf doesn't support streamable HTTP MCP servers, so you ne
 
 ### ChatGPT
 
-As of July 2025, ChatGPT only supports MCP servers (which it calls Custom Connectors) for Pro, Team and Enterprise users. The steps to add a cutom connector are complicated. See [the OpenAI documentation](https://platform.openai.com/docs/mcp#test-and-connect-your-mcp-server) for details.
+As of July 2025, ChatGPT only supports MCP servers (which it calls Custom Connectors) for Pro, Team and Enterprise users. The steps to add a custom connector are complicated. See [the OpenAI documentation](https://platform.openai.com/docs/mcp#test-and-connect-your-mcp-server) for details.

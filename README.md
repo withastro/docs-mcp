@@ -57,6 +57,28 @@ vscode:mcp/install?%7B%22name%22%3A%22Astro%20docs%22%2C%22url%22%3A%22https%3A%
 
 [More info on MCP in VS Code](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server)
 
+### Copilot CLI
+
+Use the Copilot CLI to interactively add the MCP server:
+
+```sh
+/mcp add
+```
+
+Alternatively, create or edit the configuration file `~/.copilot/mcp-config.json` and add:
+
+```json
+{
+  "mcpServers": {
+    "Astro docs": {
+      "url": "https://mcp.docs.astro.build/mcp"
+    }
+  }
+}
+```
+
+[More info on MCP in Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
+
 ### Windsurf
 
 As of July 2025, Windsurf doesn't support streamable HTTP MCP servers, so you need to use a local proxy. Use the following configuration:

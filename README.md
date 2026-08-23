@@ -42,7 +42,7 @@ cursor://anysphere.cursor-deeplink/mcp/install?name=Astro%20docs&config=eyJ1cmwi
 Run the following command in your terminal to add the MCP server:
 
 ```sh
-claude mcp add --transport http "Astro docs" https://mcp.docs.astro.build/mcp
+claude mcp add --transport http "Astro-Docs" https://mcp.docs.astro.build/mcp
 ```
 
 [More info on MCP in Claude Code](https://docs.anthropic.com/en/docs/claude-code/mcp)

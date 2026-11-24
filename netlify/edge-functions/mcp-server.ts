@@ -106,15 +106,38 @@ export default async function handler(req: Request) {
     });
   }
   try {
+    // Parse request body as JSON before initializing the MCP transport
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return Response.json(
+        {
+          jsonrpc: "2.0",
+          id: null,
+          error: { code: -32700, message: "Parse error" },
+        },
+        { status: 400 }
+      );
+    }
+
+    if (Array.isArray(body) && body.length === 0) {
+      return Response.json(
+        {
+          jsonrpc: "2.0",
+          id: null,
+          error: { code: -32600, message: "Invalid Request" },
+        },
+        { status: 400 }
+      );
+    }
+
     const { req: nodeReq, res: nodeRes } = toReqRes(req);
     const server = getServer();
     const transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: undefined, // Stateless mode
     });
     await server.connect(transport);
-
-    // Parse request body as JSON
-    const body = await req.json();
 
     // Handle the request through the transport
     await transport.handleRequest(nodeReq, nodeRes, body);
